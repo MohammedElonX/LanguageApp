@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Find the correct View (NumbersActivity)
+        //Find the correct View (PhrasesActivity)
         TextView phrases = findViewById(R.id.phrases);
         //Set OnClickListener to that view
         phrases.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Find the correct View (NumbersActivity)
+        //Find the correct View FamilyActivity)
         TextView family = findViewById(R.id.family);
         //Set OnClickListener to that view
         family.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Find the correct View (NumbersActivity)
+        //Find the correct View (ColorsActivity)
         TextView colors = findViewById(R.id.colors);
         //Set OnClickListener to that view
         colors.setOnClickListener(new View.OnClickListener() {
