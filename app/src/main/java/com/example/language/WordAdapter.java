@@ -40,7 +40,14 @@ public class WordAdapter extends ArrayAdapter<Words> {
 
         //Find ImageView and ID and set appropriate image
         ImageView icons = listItemView.findViewById(R.id.image);
-        icons.setImageResource(currentWord.getImageId());
+        if(currentWord.hasImage()) {
+            icons.setImageResource(currentWord.getImageId());
+            //Makes sure the view is visible
+            icons.setVisibility(View.VISIBLE);
+        } else {
+            //If no image found, prevents image from showing on activity
+            icons.setVisibility(View.GONE);
+        }
 
         return listItemView;
     }

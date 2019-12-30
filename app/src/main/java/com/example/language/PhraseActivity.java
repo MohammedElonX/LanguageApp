@@ -14,7 +14,16 @@ public class PhraseActivity extends AppCompatActivity {
         setContentView(R.layout.words_list);
 
         ArrayList<Words> wordsList = new ArrayList<Words>();
-        wordsList.add(new Words("Coming Up Soon!", "I don't know!"));
+        wordsList.add(new Words("Where are you going?", "Minto wuksus"));
+        wordsList.add(new Words("What is your name?", "Tinna oyakse na"));
+        wordsList.add(new Words("My name is ..", "Oyasset"));
+        wordsList.add(new Words("How are you feeling?", "Michaksas"));
+        wordsList.add(new Words("I'm feeling good", "Kuchi ache"));
+        wordsList.add(new Words("Are you coming?", "Aanas'sa"));
+        wordsList.add(new Words("Yes, I'm coming", "Haa' aanam"));
+        wordsList.add(new Words("I'm coming", "Aanam"));
+        wordsList.add(new Words("Let's go", "Yoowutis"));
+        wordsList.add(new Words("Come here", "Anni'nem"));
 
         WordAdapter words = new WordAdapter (this, wordsList);
 

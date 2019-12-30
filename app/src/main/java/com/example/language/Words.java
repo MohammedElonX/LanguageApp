@@ -4,6 +4,7 @@ public class Words {
     private String mEnglish;
     private String mMiwok;
     private int mImageId;
+    private static int NO_IMAGE_PROVIDED= -1;
 
     Words(String english, String miwok){
         mEnglish = english;
@@ -24,5 +25,9 @@ public class Words {
 
     public String getMiwok(){
         return mMiwok;
+    }
+
+    public boolean hasImage(){
+        return NO_IMAGE_PROVIDED != mImageId;
     }
 }
