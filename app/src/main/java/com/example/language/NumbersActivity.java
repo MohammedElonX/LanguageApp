@@ -14,16 +14,16 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.words_list);
 
         ArrayList<Words> wordsList = new ArrayList<Words>();
-        wordsList.add(new Words("One", "Lutti"));
-        wordsList.add(new Words("Two", "Otiiko"));
-        wordsList.add(new Words("Three", "Tolookosu"));
-        wordsList.add(new Words("Four", "Oyyisa"));
-        wordsList.add(new Words("Five", "Massokka"));
-        wordsList.add(new Words("Six", "Temmokka"));
-        wordsList.add(new Words("Seven", "Kanekaku"));
-        wordsList.add(new Words("Eight", "Kawinta"));
-        wordsList.add(new Words("Nine", "Wo'e"));
-        wordsList.add(new Words("Ten", "Na'aacha"));
+        wordsList.add(new Words("One", "Lutti", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Two", "Otiiko", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Three", "Tolookosu", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Four", "Oyyisa", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Five", "Massokka", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Six", "Temmokka", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Seven", "Kanekaku", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Eight", "Kawinta", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Nine", "Wo'e", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Ten", "Na'aacha", R.mipmap.ic_launcher));
 
         WordAdapter words = new WordAdapter (this, wordsList);
 

@@ -14,16 +14,16 @@ public class FamilyActivity extends AppCompatActivity {
         setContentView(R.layout.words_list);
 
         ArrayList<Words> wordsList = new ArrayList<Words>();
-        wordsList.add(new Words("Father", "Epa"));
-        wordsList.add(new Words("Mother", "Eta"));
-        wordsList.add(new Words("Son", "Angsi"));
-        wordsList.add(new Words("Daughter", "Tune"));
-        wordsList.add(new Words("Older brother", "Taachi"));
-        wordsList.add(new Words("Younger brother", "Chalitti"));
-        wordsList.add(new Words("Older sister", "Tete"));
-        wordsList.add(new Words("Younger sister", "Kolliti"));
-        wordsList.add(new Words("Grand Mother", "Ema"));
-        wordsList.add(new Words("Grand Father", "Paapa"));
+        wordsList.add(new Words("Father", "Epa", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Mother", "Eta", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Son", "Angsi", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Daughter", "Tune", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Older brother", "Taachi", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Younger brother", "Chalitti", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Older sister", "Tete", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Younger sister", "Kolliti", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Grand Mother", "Ema", R.mipmap.ic_launcher));
+        wordsList.add(new Words("Grand Father", "Paapa", R.mipmap.ic_launcher));
 
         WordAdapter words = new WordAdapter (this, wordsList);
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class WordAdapter extends ArrayAdapter<Words> {
         //Inflate view if not being reused
         View listItemView = convertView;
         if(listItemView == null){
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_numbers, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_view_activities, parent, false);
         }
 
         //Get object located at this position
@@ -36,6 +37,10 @@ public class WordAdapter extends ArrayAdapter<Words> {
 
         TextView englishWord = listItemView.findViewById(R.id.english_word);
         englishWord.setText(currentWord.getEnglish());
+
+        //Find ImageView and ID and set appropriate image
+        ImageView icons = listItemView.findViewById(R.id.image);
+        icons.setImageResource(currentWord.getImageId());
 
         return listItemView;
     }
