@@ -2,28 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:padding="16dp"
-              android:orientation="horizontal">
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:minHeight="@dimen/list_item_height"
+              android:background="@color/tan_background">
 
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
+    <ImageView android:layout_width="@dimen/list_item_height"
+               android:layout_height="@dimen/list_item_height"
                android:id="@+id/image"
-               android:src="@mipmap/ic_launcher"/>
+               />
 
-    <LinearLayout android:layout_height="wrap_content"
+    <LinearLayout android:layout_height="match_parent"
                   android:layout_width="match_parent"
+                  android:id="@+id/text_container"
                   android:orientation="vertical"
-                  android:padding="15dp">
+                  android:paddingLeft="16dp">
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:gravity="bottom"
+                  android:textAppearance="?android:textAppearanceMedium"
+                  android:textColor="@android:color/white"
+                  android:textStyle="bold"
                   android:id="@+id/miwok_word"
                   tools:text="Lutti"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:gravity="top"
                   android:id="@+id/english_word"
+                  android:textAppearance="?android:textAppearanceMedium"
+                  android:textColor="@android:color/white"
                   tools:text="One"/>
 
     </LinearLayout>

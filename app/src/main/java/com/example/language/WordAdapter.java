@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import java.util.List;
 
 public class WordAdapter extends ArrayAdapter<Words> {
 
-    public WordAdapter(@NonNull Context context, @NonNull List<Words> objects) {
+    private int mColorResId;
+
+    public WordAdapter(@NonNull Context context, @NonNull List<Words> objects, int colorId) {
         super(context, 0, objects);
+        mColorResId = colorId;
     }
 
     @NonNull
@@ -46,8 +50,13 @@ public class WordAdapter extends ArrayAdapter<Words> {
             icons.setVisibility(View.VISIBLE);
         } else {
             //If no image found, prevents image from showing on activity
+            icons.setVisibility(View.INVISIBLE);
             icons.setVisibility(View.GONE);
         }
+
+        View textCon = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(), mColorResId);
+        textCon.setBackgroundColor(color);
 
         return listItemView;
     }
