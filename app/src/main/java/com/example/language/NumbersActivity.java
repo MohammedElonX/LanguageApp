@@ -39,9 +39,30 @@ public class NumbersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Words word = wordsList.get(i);
+
+                //Releases player of any media resource
+                releaseMedia();
+
+                //Plays the clicked media player
                 mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getAudioResourceId());
                 mMediaPlayer.start();
+
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        releaseMedia();
+                    }
+                });
             }
         });
+    }
+
+    private void releaseMedia(){
+        if(mMediaPlayer != null){
+            mMediaPlayer.release();
+
+            //Sets mediaplayer to null
+            mMediaPlayer = null;
+        }
     }
 }
