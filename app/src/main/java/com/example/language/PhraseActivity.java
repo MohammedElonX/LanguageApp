@@ -55,6 +55,12 @@ public class PhraseActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        releaseMedia();
+    }
+
     private void releaseMedia(){
         if(mMediaPlayer != null){
             mMediaPlayer.release();
