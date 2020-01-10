@@ -66,7 +66,8 @@ public class NumbersActivity extends AppCompatActivity {
                 releaseMedia();
 
                 //Request audio focus
-                int result = mAudioManger.requestAudioFocus(mAudioFocusLIstener, AudioManager.STREAM_MUSIC ,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                int result = mAudioManger.requestAudioFocus(mAudioFocusLIstener, AudioManager.STREAM_MUSIC ,
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                 if(result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
                     //We have audio focus now

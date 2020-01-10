@@ -1,5 +1,7 @@
 package com.example.language;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +13,28 @@ import java.util.ArrayList;
 
 public class PhraseActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+    private AudioManager mAudioManger;
+
+    private AudioManager.OnAudioFocusChangeListener mAudioFocusLIstener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int i) {
+            if(i == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || i == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK){
+                mMediaPlayer.pause();
+                mMediaPlayer.seekTo(0);
+            }else if(i == AudioManager.AUDIOFOCUS_GAIN){
+                mMediaPlayer.start();
+            }else if(i == AudioManager.AUDIOFOCUS_LOSS){
+                releaseMedia();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.words_list);
+
+        mAudioManger = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Words> wordsList = new ArrayList<Words>();
         wordsList.add(new Words("Where are you going?", "Minto wuksus", R.raw.phrase_where_are_you_going));
@@ -42,15 +61,19 @@ public class PhraseActivity extends AppCompatActivity {
 
                 releaseMedia();
 
-                mMediaPlayer = MediaPlayer.create(PhraseActivity.this, word.getAudioResourceId());
-                mMediaPlayer.start();
+                int result = mAudioManger.requestAudioFocus(mAudioFocusLIstener, AudioManager.STREAM_MUSIC,
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    mMediaPlayer = MediaPlayer.create(PhraseActivity.this, word.getAudioResourceId());
+                    mMediaPlayer.start();
 
-                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        releaseMedia();
-                    }
-                });
+                    mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            releaseMedia();
+                        }
+                    });
+                }
             }
         });
     }
@@ -65,6 +88,8 @@ public class PhraseActivity extends AppCompatActivity {
         if(mMediaPlayer != null){
             mMediaPlayer.release();
             mMediaPlayer = null;
+
+            mAudioManger.abandonAudioFocus(mAudioFocusLIstener);
         }
     }
 }
